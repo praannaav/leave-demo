@@ -5,14 +5,17 @@
   <title>Guided Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Prevent scrolling */
       font-family: Arial, sans-serif;
     }
     .iframe-container {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 100%; /* Fill the viewport height */
       overflow: hidden;
     }
     .iframe-container iframe {
@@ -26,15 +29,21 @@
     /* Message prompting users to rotate their devices */
     .rotate-message {
       display: none;
-      text-align: center;
+      height: 100%;
+      box-sizing: border-box;
       padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     @media screen and (orientation: portrait) and (max-width: 768px) {
       .iframe-container {
         display: none;
       }
       .rotate-message {
-        display: block;
+        display: flex;
       }
     }
   </style>
@@ -42,7 +51,7 @@
 <body>
   <div class="rotate-message">
     <p>Please rotate your device to landscape mode to view the demo.</p>
-    <img src="rotate-icon.png" alt="Rotate Device" style="width:50px; height:auto;">
+    <img src="rotate-icon.png" alt="Rotate Device" style="width: 50px; height: auto;">
   </div>
   <div class="iframe-container">
     <iframe
