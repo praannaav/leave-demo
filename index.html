@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Guided Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
+      font-family: Arial, sans-serif;
     }
     .iframe-container {
       position: relative;
-      box-sizing: content-box;
-      max-height: 80vh;
       width: 100%;
-      aspect-ratio: 2.210526315789474;
-      padding: 40px 0;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
     }
     .iframe-container iframe {
       position: absolute;
@@ -23,15 +23,33 @@
       height: 100%;
       border: none;
     }
+    /* Message prompting users to rotate their devices */
+    .rotate-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    @media screen and (orientation: portrait) and (max-width: 768px) {
+      .iframe-container {
+        display: none;
+      }
+      .rotate-message {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="rotate-message">
+    <p>Please rotate your device to landscape mode to view the demo.</p>
+    <img src="rotate-icon.png" alt="Rotate Device" style="width:50px; height:auto;">
+  </div>
   <div class="iframe-container">
     <iframe
       src="https://app.supademo.com/embed/cm3enjz6v305o8hsplanlcde7?embed_v=2"
       loading="lazy"
       title="LE-WM Leave Management"
-      allow="clipboard-write"
+      allow="clipboard-write; fullscreen"
       webkitallowfullscreen
       mozallowfullscreen
       allowfullscreen
